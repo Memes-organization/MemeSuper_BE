@@ -6,8 +6,7 @@ export class ErrorResponse extends Error {
     this.name = 'ErrorResponse'
     this.statusCode = statusCode
     this.msg = message
-    // eslint-disable-next-line no-undefined
-    this.options = options && Object.keys(options) > 0 ? options : undefined
+    this.options = options instanceof Object && Object.keys(options) > 0 ? options : undefined
     Error.captureStackTrace(this, this.constructor)
   }
 }
