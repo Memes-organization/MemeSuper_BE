@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
 import { CreatedSuccess, OKSuccess, SuccessResponse } from '~/helpers/SuccessResponse'
 import { Meme } from '~/schemas/memeSchema'
-import { pickKeys } from '~/utils'
+import { getPathMemeImg, pickKeys } from '~/utils'
 
 export const uploadMeme = async (req, res, next) => {
   // const { fieldname, mimetype, filename, size } = req.file
@@ -22,4 +22,8 @@ export const getListMeme = async (req, res, next) => {
   const listMeme = await Meme.paginate({}, { page, limit, sort: { createdAt: -1 } })
 
   res.status(StatusCodes.OK).json(new OKSuccess('', { ...listMeme }))
+}
+
+export const downloadMeme = (req, res, next) => {
+  res.download(getPathMemeImg(req.params.filename))
 }
