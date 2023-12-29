@@ -13,5 +13,5 @@ export const uploadMeme = async (req, res, next) => {
 
   const meme = await Meme.insertMany(memeCreate)
 
-  res.json(new SuccessResponse('Upload success', StatusCodes.OK, { meme }))
+  res.json(new SuccessResponse('Upload success', StatusCodes.CREATED, { meme }))
 }

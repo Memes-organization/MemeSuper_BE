@@ -6,7 +6,7 @@ const FILE_LIMIT_SIZE = 1 * 1024 * 1024 // 1 MB
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(process.cwd(), 'public/memes'))
+    cb(null, path.join(process.cwd(), 'public/meme'))
   },
   filename: (req, file, cb) => {
     const uniqueSuffix =
