@@ -46,3 +46,10 @@ export class UnprocessableEntityException extends ErrorResponse {
     this.name = 'UnprocessableEntityException'
   }
 }
+
+export class BadRequestException extends ErrorResponse {
+  constructor(message = ReasonPhrases.BAD_REQUEST, options = {}, status = StatusCodes.BAD_REQUEST) {
+    super(message, status, options)
+    this.name = 'BadRequestException'
+  }
+}

@@ -1,5 +1,6 @@
 import multer from 'multer'
 import path from 'path'
+import { BadRequestException } from '~/helpers/ErrorResponse'
 import { fileFilter } from '~/helpers/fileFilter'
 
 const FILE_LIMIT_SIZE = 1 * 1024 * 1024 // 1 MB
@@ -26,6 +27,7 @@ export const imgUploadMW = (req, res, next) => {
   upload(req, res, (err) => {
     if (err instanceof multer.MulterError) next(err)
     else if (err) next(err)
+    else if (req.files.length <= 0) next(new BadRequestException('File cannot be empty'))
     next()
   })
 }
