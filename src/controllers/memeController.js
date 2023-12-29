@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes'
-import SuccessResponse from '~/helpers/SuccessResponse'
+import { CreatedSuccess, OKSuccess, SuccessResponse } from '~/helpers/SuccessResponse'
 import { Meme } from '~/schemas/memeSchema'
 import { pickKeys } from '~/utils'
 
@@ -13,5 +13,13 @@ export const uploadMeme = async (req, res, next) => {
 
   const meme = await Meme.insertMany(memeCreate)
 
-  res.json(new SuccessResponse('Upload success', StatusCodes.CREATED, { meme }))
+  res.status(StatusCodes.CREATED).json(new CreatedSuccess('Upload image success', { meme }))
+}
+
+export const getListMeme = async (req, res, next) => {
+  const page = +req.query.page || 1
+  const limit = +req.query.limit || 10
+  const listMeme = await Meme.paginate({}, { page, limit, sort: { createdAt: -1 } })
+
+  res.status(StatusCodes.OK).json(new OKSuccess('', { ...listMeme }))
 }

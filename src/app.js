@@ -13,7 +13,7 @@ const app = express()
 // ---------------------
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(process.cwd(), 'public')))
+app.use('/public', express.static(path.join(process.cwd(), 'public')))
 app.use(compression())
 app.use(cors())
 app.use(helmet())
