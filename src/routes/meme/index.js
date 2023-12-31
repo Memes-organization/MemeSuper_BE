@@ -1,7 +1,7 @@
 import express from 'express'
-import { downloadMeme, getListMeme, uploadMeme } from '~/controllers/memeController'
-import asyncHandler from '~/helpers/asyncHandler'
-import { imgUploadMW } from '~/middlewares/imgUploadMW'
+import asyncHandler from '@src/helpers/asyncHandler'
+import { imgUploadMW } from '@src/middlewares/imgUploadMW'
+import { downloadMeme, getListMeme, uploadMeme } from '@src/controllers/memeController'
 
 const router = express.Router()
 

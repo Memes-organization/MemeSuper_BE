@@ -1,4 +1,14 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": [["module-resolver", { "alias": { "~": "./src" } }]]
+  "ignore": ["src/**/*.spec.js", "src/**/*.test.js"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@src": "./src"
+        }
+      }
+    ]
+  ]
 }

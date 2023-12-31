@@ -1,6 +1,6 @@
 import express from 'express'
 import { ReasonPhrases } from 'http-status-codes'
-import { NotFoundException } from '~/helpers/ErrorResponse'
+import { NotFoundException } from '@src/helpers/ErrorResponse'
 import memeRotue from './meme'
 
 const router = express.Router()

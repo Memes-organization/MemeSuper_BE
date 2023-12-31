@@ -19,6 +19,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: ['dist'],
   rules: {
     'no-undef': 'error',
     'no-unused-vars': 'warn',

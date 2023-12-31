@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
-import { CreatedSuccess, OKSuccess, SuccessResponse } from '~/helpers/SuccessResponse'
-import { Meme } from '~/schemas/memeSchema'
-import { getPathMemeImg, pickKeys } from '~/utils'
+import { Meme } from '@src/schemas/memeSchema'
+import { CreatedSuccess, OKSuccess } from '@src/helpers/SuccessResponse'
+import { getPathMemeImg, pickKeys } from '@src/utils'
 
 export const uploadMeme = async (req, res, next) => {
   // const { fieldname, mimetype, filename, size } = req.file
