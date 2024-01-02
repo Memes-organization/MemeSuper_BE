@@ -27,7 +27,8 @@ export const imgUploadMW = (req, res, next) => {
   upload(req, res, (err) => {
     if (err instanceof multer.MulterError) next(err)
     else if (err) next(err)
-    else if (req.files.length <= 0) next(new BadRequestException('File cannot be empty'))
+    else if (Array.isArray(req.files) && req.files.length <= 0)
+      next(new BadRequestException('File cannot be empty'))
     next()
   })
 }
