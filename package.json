@@ -1,7 +1,7 @@
 {
   "name": "super-meme",
   "version": "1.0.0",
-  "description": "",
+  "description": "- Node.js ( >= 18.19.0 )\r - npm ( >= 10.2.3 )",
   "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
