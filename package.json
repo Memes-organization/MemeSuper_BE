@@ -2,7 +2,7 @@
   "name": "super-meme",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
     "format": "prettier src/**/* --write",
