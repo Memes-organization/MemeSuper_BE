@@ -9,7 +9,7 @@
     "lint": "eslint src/**/*",
     "prepare": "husky install",
     "rmdist": "rimraf dist",
-    "build:src": "babel ./src --out-dir ./dist --copy-files",
+    "build:src": "babel ./src --out-dir ./dist --copy-files --no-comments",
     "build": "npm run rmdist && npm run build:src",
     "start": "node dist/server.js"
   },
