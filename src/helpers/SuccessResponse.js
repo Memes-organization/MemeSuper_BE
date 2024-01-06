@@ -2,8 +2,8 @@ import { StatusCodes, getReasonPhrase } from 'http-status-codes'
 
 export class SuccessResponse {
   constructor(msg, statusCode, metadata, options) {
-    this.statusCode = statusCode || StatusCodes.OK
-    this.msg = !msg ? getReasonPhrase(this.statusCode) : msg
+    this.statusCode = statusCode ?? StatusCodes.OK
+    this.msg = msg ?? getReasonPhrase(this.statusCode)
     this.metadata =
       metadata instanceof Object && Object.keys(metadata).length > 0 ? metadata : undefined
     this.options =
