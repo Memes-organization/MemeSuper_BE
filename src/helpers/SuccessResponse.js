@@ -1,9 +1,10 @@
 import { StatusCodes, getReasonPhrase } from 'http-status-codes'
 
 export class SuccessResponse {
-  constructor(msg, statusCode, metadata, options) {
+  constructor(message, statusCode, metadata, options) {
     this.statusCode = statusCode ?? StatusCodes.OK
-    this.msg = msg ?? getReasonPhrase(this.statusCode)
+    this.success = getReasonPhrase(this.statusCode)
+    this.msg = message ?? getReasonPhrase(this.statusCode)
     this.metadata =
       metadata instanceof Object && Object.keys(metadata).length > 0 ? metadata : undefined
     this.options =
@@ -13,14 +14,14 @@ export class SuccessResponse {
 
 // OK
 export class OKSuccess extends SuccessResponse {
-  constructor(msg, metadata, options) {
-    super(msg, StatusCodes.OK, metadata, options)
+  constructor(message, metadata, options) {
+    super(message, StatusCodes.OK, metadata, options)
   }
 }
 
 // CREATED
 export class CreatedSuccess extends SuccessResponse {
-  constructor(msg, metadata, options) {
-    super(msg, StatusCodes.CREATED, metadata, options)
+  constructor(message, metadata, options) {
+    super(message, StatusCodes.CREATED, metadata, options)
   }
 }
