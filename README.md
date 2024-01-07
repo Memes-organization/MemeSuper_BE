@@ -21,6 +21,6 @@
 - `npm run dev`: Chạy dự án.
 - `npm run prepare`: Cài đặt husky
 
-4. **.env file**
+4. **.env**
 
-- Thay đổi các thông tin trong file `env` (nếu cần)
+- Tạo file `.env` và cấu hình các tham số theo file `.env.example`
