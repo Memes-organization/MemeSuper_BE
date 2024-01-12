@@ -3,6 +3,7 @@ import { Meme } from '@src/schemas/memeSchema'
 import { CreatedSuccess, OKSuccess } from '@src/helpers/SuccessResponse'
 import { getPathMemeImg, pickKeys } from '@src/utils'
 import { NotFoundException } from '@src/helpers/ErrorResponse'
+import { customLabelsPaginateMongoose } from '@src/utils/const'
 
 export const uploadMeme = async (req, res, next) => {
   // const { fieldname, mimetype, filename, size } = req.file
@@ -20,7 +21,15 @@ export const uploadMeme = async (req, res, next) => {
 export const getListMeme = async (req, res, next) => {
   const page = +req.query.page || 1
   const limit = +req.query.limit || 10
-  const listMeme = await Meme.paginate({}, { page, limit, sort: { createdAt: -1 } })
+  const listMeme = await Meme.paginate(
+    {},
+    {
+      page,
+      limit,
+      sort: { createdAt: -1 },
+      customLabels: { ...customLabelsPaginateMongoose, docs: 'meme' },
+    },
+  )
 
   res.status(StatusCodes.OK).json(new OKSuccess('', { ...listMeme }))
 }

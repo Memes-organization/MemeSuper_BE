@@ -6,12 +6,12 @@ import { downloadMeme, getListMeme, uploadMeme } from '@src/controllers/memeCont
 const router = express.Router()
 
 /**
- * /meme/uploadMeme
- * /meme/listMeme
- * /downloadMeme/:filename
+ * /api/meme/uploadMeme
+ * /api/meme/listMeme
+ * /api/downloadMeme/:filename
  */
 router.post('/uploadMeme', imgUploadMW, asyncHandler(uploadMeme))
-router.get('/listMeme', asyncHandler(getListMeme))
+router.get('/getListMeme', asyncHandler(getListMeme))
 router.get('/downloadMeme/:filename', asyncHandler(downloadMeme))
 
 export default router
