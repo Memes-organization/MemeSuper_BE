@@ -3,19 +3,22 @@
   "version": "1.0.0",
   "description": "- Node.js ( >= 18.19.0 )\r - npm ( >= 10.2.3 )",
   "main": "dist/server.js",
+  "author": "",
+  "keywords": [],
+  "license": "ISC",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
-    "format": "prettier src/**/* --write",
-    "lint": "eslint src/**/*",
+    "lint": "eslint src/**/*.{ts,js,json}",
+    "format": "prettier --write src/**/*.{ts,js,json}",
     "prepare": "husky install",
     "rmdist": "rimraf dist",
     "build:src": "babel ./src --out-dir ./dist --copy-files --no-comments",
     "build": "npm run rmdist && npm run build:src",
     "start": "node dist/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "lint-staged": {
+    "*.--write": "npm run format"
+  },
   "dependencies": {
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -42,9 +45,5 @@
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.--write": "npm run format"
   }
 }
