@@ -4,7 +4,7 @@ export class SuccessResponse {
   constructor(message, statusCode, metadata, options) {
     this.statusCode = statusCode ?? StatusCodes.OK
     this.success = getReasonPhrase(this.statusCode)
-    this.msg = message ?? getReasonPhrase(this.statusCode)
+    this.msg = message || getReasonPhrase(this.statusCode)
     this.metadata =
       metadata instanceof Object && Object.keys(metadata).length > 0 ? metadata : undefined
     this.options =
