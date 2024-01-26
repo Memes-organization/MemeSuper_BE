@@ -6,12 +6,21 @@ import { imgUploadMW } from 'src/middlewares/imgUploadMW'
 const router = express.Router()
 
 /**
- * /api/meme/uploadMeme
- * /api/meme/listMeme
- * /api/downloadMeme/:filename
+ * Get list meme
+ * [GET] /api/meme/listMeme
+ */
+router.get('/getListMeme', asyncHandler(getListMeme))
+
+/**
+ * Download meme
+ * [GET] /api/downloadMeme/:filename
+ */
+router.get('/downloadMeme/:filename', asyncHandler(downloadMeme))
+
+/**
+ * Upload meme
+ * [POST] /api/meme/uploadMeme
  */
 router.post('/uploadMeme', imgUploadMW, asyncHandler(uploadMeme))
-router.get('/getListMeme', asyncHandler(getListMeme))
-router.get('/downloadMeme/:filename', asyncHandler(downloadMeme))
 
 export default router
