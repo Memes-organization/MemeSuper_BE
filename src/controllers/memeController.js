@@ -1,14 +1,11 @@
 import { StatusCodes } from 'http-status-codes'
-import { Meme } from '@src/schemas/memeSchema'
-import { CreatedSuccess, OKSuccess } from '@src/helpers/SuccessResponse'
-import { getPathMemeImg, pickKeys } from '@src/utils'
-import { NotFoundException } from '@src/helpers/ErrorResponse'
-import { customLabelsPaginateMongoose } from '@src/utils/const'
+import { Meme } from 'src/schemas/memeSchema'
+import { CreatedSuccess, OKSuccess } from 'src/helpers/SuccessResponse'
+import { NotFoundException } from 'src/helpers/ErrorResponse'
+import { getPathMemeImg, pickKeys } from 'src/utils'
+import { customLabelsPaginateMongoose } from 'src/utils/const'
 
 export const uploadMeme = async (req, res, next) => {
-  // const { fieldname, mimetype, filename, size } = req.file
-  // const meme = await Meme.create({ fieldname, mimetype, filename, size })
-
   const memeCreate = req.files.map((item) =>
     pickKeys(item, ['fieldname', 'mimetype', 'filename', 'size']),
   )
