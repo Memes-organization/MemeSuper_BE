@@ -18,8 +18,10 @@
    ```
 3. **Các lệnh**
 
-- `npm run dev`: Chạy dự án.
+- `npm run dev`: Chạy dự án (môi trường development).
 - `npm run prepare`: Cài đặt husky
+- `npm run build`: Build source code
+- `npm start`: Chạy dự án (môi trường product, chỉ chạy được sau khi build)
 
 4. **.env**
 
