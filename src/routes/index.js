@@ -1,7 +1,6 @@
 import express from 'express'
-import { ReasonPhrases } from 'http-status-codes'
-import { NotFoundException } from 'src/helpers/ErrorResponse'
 import apiRoute from './api'
+import URLNotFoundRoute from './404'
 
 const router = express.Router()
 
@@ -11,8 +10,6 @@ router.get('/', (req, res, next) => {
 
 router.use('/api', apiRoute)
 
-router.use((req, res, next) => {
-  return next(new NotFoundException(`URL ${ReasonPhrases.NOT_FOUND}`))
-})
+router.use(URLNotFoundRoute)
 
 export default router
