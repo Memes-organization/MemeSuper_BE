@@ -1,8 +1,9 @@
 import 'dotenv/config'
 import { createServer } from 'http'
 import app from './app'
+import env from './config/envalid'
 
-const PORT = process.env.PORT
+const PORT = env.PORT
 const server = createServer(app)
 
 server.listen(PORT, () => {
