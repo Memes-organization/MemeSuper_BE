@@ -1,14 +1,8 @@
 import { ErrorResponse } from './ErrorResponse'
-import path from 'path'
 
-function isImgFile(str) {
-  const imgFileRegex = /^\.(jpg|jpeg|png)$/i
-  return imgFileRegex.test(str)
-}
+const imgMimetype = ['image/jpeg', 'image/png', 'image/gif']
 
 export const fileFilter = (req, file, cb) => {
-  if (file.fieldname === 'image' && isImgFile(path.extname(file.originalname))) {
-    return cb(null, true)
-  }
+  if (imgMimetype.includes(file.mimetype)) return cb(null, true)
   return cb(new ErrorResponse('Only png/jpg images can be uploaded'))
 }
