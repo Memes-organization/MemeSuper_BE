@@ -2,17 +2,13 @@
 
 ## Meme route
 
-### Host
-
-- [http://localhost:8000](http://localhost:8000)
-
 ### GET /public/meme/{filename}
 
 - Mô tả: Truy cập vào các file ảnh tĩnh meme trên server
 - Ví dụ: http://localhost:8000/public/meme/image-1703859490992-171217761.jpg
 - Request: Không có nội dung yêu cầu nào được yêu cầu cho yêu cầu này.
 
-### POST /meme/uploadMeme
+### POST /api/meme/uploadMeme
 
 - Mô tả: Tải lên ảnh meme, có thể tải nhiều ảnh cùng 1 lần
 - Content-Type: multipart/form-data
@@ -35,9 +31,7 @@
       - \_\_v (number): Phiên bản của meme được tải lên.
       - createdAt (string): Dấu thời gian khi meme được tạo.
         -updatedAt (string): Dấu thời gian về thời điểm meme được cập nhật lần cuối.
-- Ví dụ:
-  - image: file.png, file.jpg
-  - Response
+- Response E.g:
   ```json
   {
     "statusCode": 201,
@@ -60,20 +54,75 @@
   }
   ```
 
-### GET /meme/listMeme
+### GET /api/meme/getListMeme
 
-- Mô tả: Lấy danh sách các file ảnh meme dựa trên phân trang.
-- Query Parameters:
-  - `page` (tuỳ chọn): Số trang cần hiển thị (mặc định là 1 nếu không được cung cấp).
-  - `limit` (tuỳ chọn): Số lượng file ảnh trên mỗi trang (mặc định là 10 nếu không được cung cấp).
-- Phản hồi:
-  - Server sẽ trả về danh sách các file ảnh meme theo phân trang dựa trên các tham số `page` và `limit`.
 - Ví dụ: http://localhost:8000/meme/listMeme?page=1&limit=10
+- Mô tả: Lấy danh sách các file ảnh meme dựa trên phân trang.
+- Request
+  - GET /api/meme/getListMeme
+- Query Parameters:
+  - `page` (integer, required) (options): Số trang cần hiển thị (mặc định là 1 nếu không được cung cấp).
+  - `limit` (integer, required) (options): Số lượng file ảnh trên mỗi trang (mặc định là 10 nếu không được cung cấp).
+- Response:
+  - statusCode (integer): The status code of the response.
+  - success (string): The success message.
+  - msg (string): Additional message.
+  - metadata (object): Contains the metadata for the meme list.
+    - meme (array):
+      - \_id (string): The ID of the meme.
+      - fieldname (string): The field name of the meme.
+      - mimetype (string): The MIME type of the meme.
+      - filename (string): The filename of the meme.
+      - size (integer): The size of the meme.
+      - \_\_v (integer): Version control.
+      - createdAt (string): The creation date of the meme.
+      - updatedAt (string): The last update date of the meme.
+    - meta (object):
+      - total (integer): The total number of memes.
+      - limit (integer): The limit of memes per page.
+      - totalPages (integer): The total number of pages.
+      - page (integer): The current page number.
+      - pagingCounter (integer): The paging counter.
+      - hasPrevPage (boolean): Indicates if there is a previous page.
+      - hasNextPage (boolean): Indicates if there is a next page.
+      - prevPage (integer): The previous page number.
+      - nextPage (integer): The next page number.
+- Response E.g:
+  ```json
+  {
+    "statusCode": 200,
+    "success": "OK",
+    "msg": "",
+    "metadata": {
+      "meme": [
+        {
+          "_id": "65a16d6481288a1a6cb49c7e",
+          "fieldname": "image",
+          "mimetype": "image/png",
+          "filename": "image-1705078116692-882463044.png",
+          "size": 483570,
+          "__v": 0,
+          "createdAt": "2024-01-12T16:48:36.711Z",
+          "updatedAt": "2024-01-12T16:48:36.711Z"
+        }
+      ],
+      "meta": {
+        "total": 12,
+        "limit": 3,
+        "totalPages": 4,
+        "page": 1,
+        "pagingCounter": 1,
+        "hasPrevPage": false,
+        "hasNextPage": true,
+        "prevPage": null,
+        "nextPage": 2
+      }
+    }
+  }
+  ```
 
 ### GET /downloadMeme/{filename}
 
-- Mô tả: Tải xuống file ảnh meme theo tên file.
+- Mô tả: Điểm cuối này thực hiện yêu cầu HTTP GET để tải xuống hình ảnh meme với tên tệp được chỉ định.
 - Path Parameters:
   - `{filename}`: Tên của file ảnh meme cần tải xuống.
-- Phản hồi:
-  - Server sẽ trả về file ảnh meme để người dùng có thể tải xuống. Định dạng và loại file sẽ phụ thuộc vào tên file và loại file gốc đã được tải lên trước đó.
