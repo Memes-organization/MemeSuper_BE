@@ -1,5 +1,5 @@
 export const customLabelsPaginateMongoose = {
-  totalDocs: 'total',
+  totalDocs: 'totalResults',
   limit: 'limit',
   totalPages: 'totalPages',
   page: 'page',
@@ -9,5 +9,5 @@ export const customLabelsPaginateMongoose = {
   prevPage: 'prevPage',
   nextPage: 'nextPage',
   meta: 'meta',
-  docs: 'docs',
+  docs: 'results',
 }
