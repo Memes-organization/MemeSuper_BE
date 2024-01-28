@@ -5,13 +5,29 @@ export class ErrorResponse extends Error {
     super(message)
     this.name = 'ErrorResponse'
     this.statusCode = statusCode ?? StatusCodes.BAD_REQUEST
-    this.msg = message ?? getReasonPhrase(this.statusCode)
+    this.msg = message || getReasonPhrase(this.statusCode)
     this.options =
       options instanceof Object && Object.keys(options).length > 0 ? options : undefined
     Error.captureStackTrace(this, this.constructor)
   }
 }
 
+/**
+ * Joi Validation Exception
+ */
+export class ValidationException extends ErrorResponse {
+  constructor(message, options) {
+    super(message, StatusCodes.UNPROCESSABLE_ENTITY)
+    this.name = 'ValidationException'
+    this.error = options?.details.map((detail) => {
+      return { message: detail.message }
+    })
+  }
+}
+
+/**
+ * HTTP Exception
+ */
 export class BadRequestException extends ErrorResponse {
   constructor(message, options) {
     super(message, StatusCodes.BAD_REQUEST, options)
