@@ -1,4 +1,4 @@
-import { ErrorResponse } from './ErrorResponse'
+import { ErrorResponse } from 'src/core/ErrorResponse'
 
 const imgMimetype = ['image/jpeg', 'image/png', 'image/gif']
 

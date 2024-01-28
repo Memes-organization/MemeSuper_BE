@@ -24,6 +24,6 @@ module.exports = {
     'no-undef': 'error',
     'no-unused-vars': 'warn',
     'no-extra-boolean-cast': 'off',
-    'no-console': 'warn',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
 }

@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
 import { Meme } from 'src/schemas/memeSchema'
-import { CreatedSuccess, OKSuccess } from 'src/helpers/SuccessResponse'
-import { NotFoundException } from 'src/helpers/ErrorResponse'
+import { CreatedSuccess, OKSuccess } from 'src/core/SuccessResponse'
+import { NotFoundException } from 'src/core/ErrorResponse'
 import { getPathMemeImg, pickKeys } from 'src/utils'
 import { customLabelsPaginateMongoose } from 'src/utils/const'
 
@@ -24,7 +24,7 @@ export const getListMeme = async (req, res, next) => {
       page,
       limit,
       sort: { createdAt: -1 },
-      customLabels: { ...customLabelsPaginateMongoose, docs: 'meme' },
+      customLabels: { ...customLabelsPaginateMongoose },
     },
   )
 

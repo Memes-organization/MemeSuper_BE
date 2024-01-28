@@ -1,7 +1,9 @@
 import express from 'express'
+import asyncHandler from 'src/core/asyncHandler'
 import { downloadMeme, getListMeme, uploadMeme } from 'src/controllers/memeController'
-import asyncHandler from 'src/helpers/asyncHandler'
 import { imgUploadMW } from 'src/middlewares/imgUploadMW'
+import { validationQuery } from 'src/middlewares/validationMw'
+import { memeListQuerySchema } from 'src/schemas/Joi'
 
 const router = express.Router()
 
@@ -9,7 +11,7 @@ const router = express.Router()
  * Get list meme
  * [GET] /api/meme/listMeme
  */
-router.get('/getListMeme', asyncHandler(getListMeme))
+router.get('/getListMeme', validationQuery(memeListQuerySchema), asyncHandler(getListMeme))
 
 /**
  * Download meme

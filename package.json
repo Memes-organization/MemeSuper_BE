@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
-    "lint": "eslint src/**/*.{ts,js,json}",
-    "format": "prettier --write src/**/*.{ts,js,json}",
+    "lint": "eslint src/**/*.{js,json}",
+    "format": "prettier --write src/**/*.{js,json}",
     "prepare": "husky install",
     "rmdist": "rimraf dist",
     "build:src": "babel ./src --out-dir ./dist --copy-files --no-comments",
@@ -17,7 +17,7 @@
     "start": "node dist/server.js"
   },
   "lint-staged": {
-    "*.--write": "npm run format"
+    "*.{js,json}": "npm run format"
   },
   "dependencies": {
     "compression": "^1.7.4",
