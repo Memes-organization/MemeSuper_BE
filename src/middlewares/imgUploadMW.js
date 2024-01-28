@@ -1,7 +1,7 @@
 import multer from 'multer'
 import path from 'path'
 import { fileFilter } from 'src/helpers/fileFilter'
-import { BadRequestException } from 'src/helpers/ErrorResponse'
+import { BadRequestException } from 'src/core/ErrorResponse'
 
 const FILE_LIMIT_SIZE = 1 * 1024 * 1024 // 1 MB
 

@@ -1,4 +1,4 @@
-import { ValidationException } from 'src/helpers/ErrorResponse'
+import { ValidationException } from 'src/core/ErrorResponse'
 
 export const validationQuery = (schema) => {
   return (req, res, next) => {

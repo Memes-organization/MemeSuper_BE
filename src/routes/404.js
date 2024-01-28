@@ -1,5 +1,5 @@
 import express from 'express'
-import { NotFoundException } from 'src/helpers/ErrorResponse'
+import { NotFoundException } from 'src/core/ErrorResponse'
 
 const router = express.Router()
 
