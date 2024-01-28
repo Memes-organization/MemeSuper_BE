@@ -24,7 +24,7 @@ export const getListMeme = async (req, res, next) => {
       page,
       limit,
       sort: { createdAt: -1 },
-      customLabels: { ...customLabelsPaginateMongoose, docs: 'meme' },
+      customLabels: { ...customLabelsPaginateMongoose },
     },
   )
 

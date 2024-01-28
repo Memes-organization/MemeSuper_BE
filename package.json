@@ -17,7 +17,7 @@
     "start": "node dist/server.js"
   },
   "lint-staged": {
-    "*.--write": "npm run format"
+    "*.{js,json}": "npm run format"
   },
   "dependencies": {
     "compression": "^1.7.4",
