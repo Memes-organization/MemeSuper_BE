@@ -2,7 +2,7 @@ export const customLabelsPaginateMongoose = {
   totalDocs: 'totalResults',
   limit: 'limit',
   totalPages: 'totalPages',
-  page: 'page',
+  page: 'currentPage',
   pagingCounter: 'pagingCounter',
   hasPrevPage: 'hasPrevPage',
   hasNextPage: 'hasNextPage',
