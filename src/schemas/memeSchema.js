@@ -6,7 +6,6 @@ const COLLECTION_NAME = 'Meme'
 
 const memeSchema = new Schema(
   {
-    fieldname: { type: String },
     mimetype: { type: String },
     filename: { type: String },
     size: { type: Number },
